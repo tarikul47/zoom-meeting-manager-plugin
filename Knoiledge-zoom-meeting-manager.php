@@ -73,7 +73,7 @@ final class Wecoder_Knoiledge
         if ( is_admin() ) {
            // new WeDevs\Academy\Admin();
         } else {
-            //new Wecoder\Knoiledge\Frontend\Menu();
+            new Wecoder\Knoiledge\Frontend\Menu();
         }
 
     }

@@ -1,0 +1,21 @@
+{
+    "name": "wecoder/knoiledge",
+    "description": "\"A meeting plugin with zoom\"",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Wecoder\\Knoiledge\\": "includes/"
+        },
+        "files": [
+            "includes/functions.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Tarikul Islam"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

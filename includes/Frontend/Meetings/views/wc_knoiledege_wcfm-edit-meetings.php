@@ -15,7 +15,7 @@ global $WCFM, $wp_query;
 		<?php do_action( 'before_wcfm_build' ); ?>
 		
 		<div class="wcfm-container wcfm-top-element-container">
-			<h2><?php _e('All Meetings', 'wcfm-custom-menus' ); ?></h2>
+			<h2><?php _e('Edit Meetings', 'wcfm-custom-menus' ); ?></h2>
 			<div class="wcfm-clearfix"></div>
 	  </div>
 	  <div class="wcfm-clearfix"></div><br />
@@ -26,7 +26,7 @@ global $WCFM, $wp_query;
 			
 				<!---- Add Content Here ----->
 
-                <button>Add Edit Meetings</button>
+                <button>Edit Meetings</button>
 
 				
 

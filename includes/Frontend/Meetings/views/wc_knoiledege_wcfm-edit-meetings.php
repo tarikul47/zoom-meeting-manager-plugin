@@ -26,9 +26,18 @@ global $WCFM, $wp_query;
 			
 				<!---- Add Content Here ----->
 
-                <button>Add New Meetings</button>
+                <button>Add Edit Meetings</button>
 
-                <?php var_dump($_GET['tab']) ?>
+				
+
+                <?php var_dump($_GET['tab']); 
+				var_dump($action);
+				
+				?>
+
+
+
+
 			
 				<div class="wcfm-clearfix"></div>
 			</div>

@@ -104,7 +104,7 @@ final class Wecoder_Knoiledge
             update_option( 'wc_knoiledege_installed', time() );
         }
 
-        update_option( 'wd_academy_version', WD_ACADEMY_VERSION );
+        update_option( 'wc_knoiledege_version', WD_ACADEMY_VERSION );
     }
 }
 

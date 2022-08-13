@@ -182,9 +182,9 @@ class Knoiledge_Zoom
     public function generate_jwt_key()
     {
         $key    = $this->api_key;
-        //$key    = 'j1n_ugpFQa-C1lreE6rIzw';
+        //$key    = 'j1n_ugpFQa-C1lreE6rIzwT';
         $secret = $this->api_secret;
-        //$secret = 'rxlan32Bv5Va3ATVuYLQJUwalAqYg49ZW8yq';
+        //$secret = 'rxlan32Bv5Va3ATVuYLQJUwalAqYg49ZW8yqA';
 
         $token = array(
             'iss' => $key,

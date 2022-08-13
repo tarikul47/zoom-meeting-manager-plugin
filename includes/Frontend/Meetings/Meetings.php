@@ -1,5 +1,8 @@
 <?php
+
 namespace Wecoder\Knoiledge\Frontend\Meetings;
+
+use Wecoder\Knoiledge\Traits\Form_Error;
 
 /**
  * Meeting class
@@ -8,8 +11,13 @@ namespace Wecoder\Knoiledge\Frontend\Meetings;
 
 class Meetings
 {
-    public function __construct()
+    public $zoom;
+
+    use Form_Error;
+
+    public function __construct($zoom)
     {
+        $this->zoom = $zoom;
         $this->wc_knoiledege_meetings_load_views();
     }
 
@@ -21,20 +29,52 @@ class Meetings
     public function wc_knoiledege_meetings_load_views()
     {
 
-        $action = isset($_GET['action']) ? $_GET['action'] : 'list';
+        $action = isset($_GET['action']) ? $_GET['action'] : 'active';
 
         switch ($action) {
 
+            case 'set-api':
+                $template = __DIR__ . '/views/wc-knoiledege-wcfm-zoom-set-api.php';
+                break;
+
+            case 'expired':
+                if (we_knolidege_zoom_check_api_connection()) {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-expired-meetings.php';
+                } else {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-zoom-set-api.php';
+                }
+                break;
+
+            case 'settings':
+                if (we_knolidege_zoom_check_api_connection()) {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-zoom-settings.php';
+                } else {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-zoom-set-api.php';
+                }
+                break;
+
             case 'new':
-                $template = __DIR__ . '/views/wc_knoiledege_wcfm-new-meetings.php';
+                if (we_knolidege_zoom_check_api_connection()) {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-new-meetings.php';
+                } else {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-zoom-set-api.php';
+                }
                 break;
 
             case 'edit':
-                $template = __DIR__ . '/views/wc_knoiledege_wcfm-edit-meetings.php';
+                if (we_knolidege_zoom_check_api_connection()) {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-edit-meetings.php';
+                } else {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-zoom-set-api.php';
+                }
                 break;
 
             default:
-                $template = __DIR__ . '/views/wc_knoiledege_wcfm-list-meetings.php';
+                if (we_knolidege_zoom_check_api_connection()) {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-active-meetings.php';
+                } else {
+                    $template = __DIR__ . '/views/wc-knoiledege-wcfm-zoom-set-api.php';
+                }
                 break;
         }
 

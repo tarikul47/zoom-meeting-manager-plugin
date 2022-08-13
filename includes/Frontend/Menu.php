@@ -1,5 +1,7 @@
 <?php
+
 namespace Wecoder\Knoiledge\Frontend;
+use Wecoder\Knoiledge\Knoiledge_Zoom;
 
 /**
  * Wcfm custom menu class
@@ -57,9 +59,9 @@ class Menu
         return $title;
     }
 
-/**
- * WCFM - Custom Menus Endpoint Intialize
- */
+    /**
+     * WCFM - Custom Menus Endpoint Intialize
+     */
     public function wc_knoiledege_wcfmcsm_init()
     {
         global $WCFM_Query;
@@ -118,7 +120,8 @@ class Menu
 
         switch ($end_point) {
             case 'wcfm-meetings':
-                new Meetings\Meetings();
+                $zoom = new Knoiledge_Zoom();
+                new Meetings\Meetings($zoom);
                 //require_once __DIR__ . '/views/wcfm-views-meetings.php';
                 break;
         }
@@ -145,5 +148,4 @@ class Menu
                 break;
         }
     }
-
 }

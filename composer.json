@@ -8,7 +8,8 @@
             "Wecoder\\Knoiledge\\": "includes/"
         },
         "files": [
-            "includes/functions.php"
+            "includes/functions.php",
+            "includes/Lib/firebase/php-jwt/src/JWT.php"
         ]
     },
     "authors": [

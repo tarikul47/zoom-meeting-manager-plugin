@@ -70,6 +70,9 @@ final class Wecoder_Knoiledge
 
         new Wecoder\Knoiledge\Assets();
 
+        new Wecoder\Knoiledge\Knoiledge_Zoom();
+
+
         if ( is_admin() ) {
            // new WeDevs\Academy\Admin();
         } else {

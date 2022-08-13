@@ -4,14 +4,16 @@ namespace Wecoder\Knoiledge;
 /**
  * Assets handlers class
  */
-class Assets {
+class Assets
+{
 
     /**
      * Class constructor
      */
-    function __construct() {
-        add_action( 'wp_enqueue_scripts', [ $this, 'register_assets' ] );
-        add_action( 'admin_enqueue_scripts', [ $this, 'register_assets' ] );
+    public function __construct()
+    {
+        add_action('wp_enqueue_scripts', [$this, 'register_assets']);
+        add_action('admin_enqueue_scripts', [$this, 'register_assets']);
     }
 
     /**
@@ -19,12 +21,13 @@ class Assets {
      *
      * @return array
      */
-    public function get_scripts() {
+    public function get_scripts()
+    {
         return [
             'knoiledge-script' => [
-                'src'     => WC_KNOILEDGE_ASSETS . '/js/wcfm-script-build.js',
-                'version' => filemtime( WC_KNOILEDGE_PATH . '/assets/js/wcfm-script-build.js' ),
-                'deps'    => [ 'jquery' ]
+                'src' => WC_KNOILEDGE_ASSETS . '/js/wcfm-script-build.js',
+                'version' => filemtime(WC_KNOILEDGE_PATH . '/assets/js/wcfm-script-build.js'),
+                'deps' => ['jquery'],
             ],
         ];
     }
@@ -34,11 +37,12 @@ class Assets {
      *
      * @return array
      */
-    public function get_styles() {
+    public function get_styles()
+    {
         return [
             'knoiledge-style' => [
-                'src'     => WC_KNOILEDGE_ASSETS . '/css/wcfm-style-build.css',
-                'version' => filemtime( WC_KNOILEDGE_PATH . '/assets/css/wcfm-style-build.css' )
+                'src' => WC_KNOILEDGE_ASSETS . '/css/wcfm-style-build.css',
+                'version' => filemtime(WC_KNOILEDGE_PATH . '/assets/css/wcfm-style-build.css'),
             ],
         ];
     }
@@ -48,26 +52,27 @@ class Assets {
      *
      * @return void
      */
-    public function register_assets() {
+    public function register_assets()
+    {
         $scripts = $this->get_scripts();
-        $styles  = $this->get_styles();
+        $styles = $this->get_styles();
 
-        foreach ( $scripts as $handle => $script ) {
-            $deps = isset( $script['deps'] ) ? $script['deps'] : false;
+        foreach ($scripts as $handle => $script) {
+            $deps = isset($script['deps']) ? $script['deps'] : false;
 
-            wp_register_script( $handle, $script['src'], $deps, $script['version'], true );
+            wp_register_script($handle, $script['src'], $deps, $script['version'], true);
         }
 
-        foreach ( $styles as $handle => $style ) {
-            $deps = isset( $style['deps'] ) ? $style['deps'] : false;
+        foreach ($styles as $handle => $style) {
+            $deps = isset($style['deps']) ? $style['deps'] : false;
 
-            wp_register_style( $handle, $style['src'], $deps, $style['version'] );
+            wp_register_style($handle, $style['src'], $deps, $style['version']);
         }
 
-        // wp_localize_script( 'academy-enquiry-script', 'weDevsAcademy', [
-        //     'ajaxurl' => admin_url( 'admin-ajax.php' ),
-        //     'error'   => __( 'Something went wrong', 'wedevs-academy' ),
-        // ] );
+        wp_localize_script( 'knoiledge-script', 'wc_knoiledege', [
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'error'   => __( 'Something went wrong', 'wc_knoiledege' ),
+        ] );
 
         // wp_localize_script( 'academy-admin-script', 'weDevsAcademy', [
         //     'nonce' => wp_create_nonce( 'wd-ac-admin-nonce' ),
